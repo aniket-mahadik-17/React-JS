@@ -1,12 +1,30 @@
-function MyFirstComponent(props) {
-  // console.log(props.name); 
-  // console.log(props.age);
-  const{name, age, children}=props;  //passing props here (by using object Destructuring)
-  return(
-      <>
-   <h2>I am {name}, I am {age} yrs old, I am inside MyFirstComponent</h2>
-     {children}  
-     </>  
-  );
-};
-export default MyFirstComponent;
+import FirstChild from "./FirstChild";
+import SecondChild from "./SecondChild";
+import ThirdChild from "./ThirdChild";
+
+
+export default (props) => {
+     const{ParentComponentName}=props;
+    return( 
+    <>
+    <h2>====First Component===
+      <h4>First Component called from {ParentComponentName}</h4>
+    </h2>
+    <FirstChild ParentComponentName={"FirstComponent"}/>
+    <SecondChild ParentComponentName={"FirstComponent"}/>
+    <ThirdChild ParentComponentName={"FirstComponent"}/>
+    </>
+    );
+  };     
+
+  // function MyFirstComponent() {
+  //   return(
+  //     <>
+  //     <h2>===FirstComponent===</h2>
+  //   <FirstChild />
+  //   <SecondChild />
+  //   <ThirdChild />
+  //   </>
+  //   );
+  // };
+  // export default MyFirstComponent;  //old way to declare(function way)

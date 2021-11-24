@@ -1,21 +1,17 @@
-//normal declation for function
-// function MySecondComponent() {
-//     return <h2>I am inside MySecondComponent</h2>;
-//   }
-//   export default MySecondComponent;
+import FirstChild from "./FirstChild";
+import SecondChild from "./SecondChild";
+import ThirdChild from "./ThirdChild";
 
-
-    //efficient way to declare function with export as well(arrow function type declaration)
-    
-    export default (props) => { 
-      // console.log(props.name); 
-      // console.log(props.age);
-      const{name, age, children}=props;      //passing props here (by using object Destructuring)                  
-    
-      return (
+export default (props) => {     
+     const{ParentComponentName}=props;                       
+    return( 
       <>
-      <h2>I am {name}, I am {age} yrs old, I am inside MySecondComponent</h2>
-    {children}
+    <h2>===Second Component===
+    <h4>Second Component called from {ParentComponentName}</h4>
+    </h2>
+    <FirstChild ParentComponentName={"SecondComponent"}/>
+    <SecondChild ParentComponentName={"SecondComponent"}/>
+    <ThirdChild ParentComponentName={"SecondComponent"}/>
     </>
-      );
-  };                            
+    );
+  };     
