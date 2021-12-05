@@ -1,13 +1,13 @@
-import logo from './logo.svg';
+
 import './App.css';
-import Counter from './Counter';
-import NewCounter from './NewCounter';
+import Course from './Course';
+import Person from './Person';
 
 function App() {
   return (
-    <div className="App">
-      <Counter/>
-      <NewCounter/>
+    <div className="container-xxl">
+     {/* <Person/> */}
+     <Course/>
     </div>
   );
 }

@@ -1,24 +1,58 @@
 import {createStore} from "redux";
+import CourseList from "./CourseList";
+ //initialstate
 
-//Initial state
-const initialState={
-    counter:0,
+ const initialState={
+    personList:[],
+    courseList:[],
 }
 
-//Reducer
-const reducer = (state=initialState, action)=>{
+ //reducer
+ const reducer=(state=initialState, action)=>{
+    const{type, payload}=action;
     
-    const{type}=action; 
-
+    const personListCopy=[...state.personList]
+    const courseListCopy=[...state.courseList]
     switch(type){
-        case "increment": return{counter: state.counter+1,} 
-        case "decrement": return{counter: state.counter-1,} 
-        default: return state
+        case "PERSON_ADD": 
+        console.log(payload);
+        personListCopy.push(payload);
+        const newState={
+            ...state,
+            personList:personListCopy,
+        };
+        return newState;
+
+        case "PERSON_DELETE":
+            
+            personListCopy.splice(payload, 1);
+            alert("Deleted");
+            return{
+                ...state,
+                personList:personListCopy
+            };
+        case "COURSE_ADD":
+            console.log(payload)
+            courseListCopy.push(payload);
+            const newState1={
+                ...state,
+                courseList:courseListCopy
+            };
+            return newState1;
+
+            case "COURSE_DELETE":
+            
+                courseListCopy.splice(payload, 1);
+                alert("Deleted");
+                return{
+                    ...state,
+                    courseList:courseListCopy
+                };
+
+        default: return state;
     }
-    
 }
+ //store
+ const store=createStore(reducer);
 
-//Store
-const store= createStore(reducer);
-
-export default store;
+ export default store;
