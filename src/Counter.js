@@ -2,16 +2,28 @@ import React,{Component} from "react";
 import { connect } from "react-redux";
 
 class Counter extends Component{
+    state={
+        inputValue:0,
+    }
+
+    onChangeHandler=(event)=>{
+        this.setState({inputValue:event.target.value})
+    }
+
     render(){
         return(
         <>
-         <h1>Counter:{this.props.counter}</h1>
-        <button onClick={this.props.increment}>Increment</button>
-        <button onClick={this.props.decrement}>Decrement</button>
+        <h1>Counter:{this.props.counter}</h1>
+        <input value={this.state.inputValue} onChange={this.onChangeHandler}></input>
+        <br/>
+        <button onClick={()=>{this.props.increment(parseInt(this.state.inputValue))}}>Increment</button>
+        <button onClick={()=>{this.props.decrement(parseInt(this.state.inputValue))}}>Decrement</button>
     </>
-        )
-    }
-}
+        );
+    };
+ 
+};
+
 const mapStateToProps=(state)=>{
     return{
         counter: state.counter,
@@ -19,8 +31,8 @@ const mapStateToProps=(state)=>{
 }
 const mapDispatchToProps=(dispatch)=>{
     return{
-        increment: ()=> dispatch({type:"increment"}),
-        decrement: ()=> dispatch({type:"decrement"}),
+        increment: (value)=> dispatch({type:"increment", value:value}),
+        decrement: (value)=> dispatch({type:"decrement", value:value}),
 
     }
 }

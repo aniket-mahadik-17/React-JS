@@ -1,13 +1,19 @@
-
+import logo from './logo.svg';
 import './App.css';
-import Course from './Course';
-import Person from './Person';
+import Counter from './Counter';
+import NewCounter from './NewCounter';
+import FunctionaComponent from './FunctionaComponent';
+import OnlineOrders from './OnlineOrders';
+import OfflineOrders from './OfflineOrders';
 
 function App() {
   return (
-    <div className="container-xxl">
-     {/* <Person/> */}
-     <Course/>
+    <div className="App">
+      <OnlineOrders/>
+      <OfflineOrders/>
+      {/* <FunctionaComponent/> */}
+      {/* <Counter/> */}
+      {/* <NewCounter/> */}
     </div>
   );
 }
